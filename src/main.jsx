@@ -1,11 +1,15 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-
+import { MaintenanceProvider } from "./context/MaintenanceContext";
 import './index.css'
 import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
-<StrictMode><App /></StrictMode>
+<StrictMode>
+     <MaintenanceProvider>
+      <App />
+    </MaintenanceProvider>
+    </StrictMode>
     
 
 )

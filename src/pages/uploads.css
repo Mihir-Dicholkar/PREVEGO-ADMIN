@@ -250,10 +250,7 @@
   flex-direction: column;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
-.field-group:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-}
+
 
 .field-group label {
   font-weight: 600;

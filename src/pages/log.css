@@ -1,17 +1,18 @@
+/* Container & Animation */
 .log-container {
-  backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  background: transparent;
   border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
   padding: 2rem;
   margin: 2rem 1rem;
   min-width: 500px;
-  animation: slideInFromRight 0.8s ease-out forwards;
+  animation: slideIn 0.8s ease-out forwards;
   opacity: 0;
   transform: translateX(50px);
 }
 
-@keyframes slideInFromRight {
+@keyframes slideIn {
   to {
     opacity: 1;
     transform: translateX(0);
@@ -21,9 +22,11 @@
 .log-container h2 {
   margin-bottom: 1.5rem;
   text-align: center;
-  color: #204080;
+  color: #0f2c54;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Controls */
 .log-controls {
   display: flex;
   justify-content: space-between;
@@ -34,40 +37,68 @@
 
 .log-controls input {
   flex: 1;
-  padding: 0.5rem;
-  border-radius: 6px;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.log-controls input:focus {
+  border-color: #007cf0;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 124, 240, 0.3);
 }
 
 .log-controls button {
-  background-color: #204080;
+  background-color: #007cf0;
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.55rem 1rem;
   border-radius: 6px;
   cursor: pointer;
+  font-weight: 600;
   transition: 0.3s ease;
 }
 
 .log-controls button:hover {
-  background-color: #163b6d;
+  background-color: #005bb5;
 }
 
+/* Table */
 .log-table {
   width: 100%;
   border-collapse: collapse;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  margin-top: 1rem;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .log-table th,
 .log-table td {
-  padding: 0.75rem;
+  padding: 0.8rem;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.log-table th {
+  background: #007cf0;
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.log-table tr:hover {
+  background-color: rgba(0, 124, 240, 0.08);
+  transition: 0.3s;
 }
 
 .log-table a {
-  color: #204080;
+  color: #007cf0;
   text-decoration: none;
   font-weight: 500;
 }
@@ -75,30 +106,37 @@
 .log-table a:hover {
   text-decoration: underline;
 }
-.action-buttons {
+
+/* Deleted Row */
+.log-deleted-row {
+  background-color: rgba(255, 0, 0, 0.1);
+
+}
+
+.filter-controls {
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 
-.edit-btn, .delete-btn {
-  background: none;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-  padding: 6px;
-  border-radius: 4px;
-  transition: background-color 0.2s;
+.filter-controls select,
+.filter-controls input[type="date"] {
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  transition: 0.2s;
 }
 
-.edit-btn:hover {
-  background-color: #d1ecf1;
-  color: #0c5460;
+.filter-controls select:focus,
+.filter-controls input[type="date"]:focus {
+  border-color: #007cf0;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 124, 240, 0.3);
 }
 
-.delete-btn:hover {
-  background-color: #f8d7da;
-  color: #721c24;
-}
+
+/* Pagination */
 .pagination {
   display: flex;
   justify-content: center;
@@ -107,21 +145,13 @@
   margin: 20px 0;
   flex-wrap: wrap;
 }
-.log-deleted-row {
-  background-color: #ffecec;
-  color: #a70000;
-}
-.log-deleted-row td {
-  font-style: italic;
-  font-weight: 500;
-}
 
 .page-btn {
   padding: 6px 12px;
   border: 1px solid #ccc;
   background-color: #fff;
   color: #333;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   transition: 0.2s;
 }
@@ -146,4 +176,28 @@
   padding: 0 6px;
   font-size: 1.2rem;
   color: #888;
+}
+
+/* Loading Spinner */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+  gap: 1rem;
+  color: #007cf0;
+}
+
+.spinner {
+  border: 5px solid rgba(0,0,0,0.1);
+  border-top: 5px solid #007cf0;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
